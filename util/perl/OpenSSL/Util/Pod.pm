@@ -1,6 +1,6 @@
 # Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
 #
-# Licensed under the OpenSSL license (the "License").  You may not use
+# Licensed under the Apache License 2.0 (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
 # in the file LICENSE in the source distribution or at
 # https://www.openssl.org/source/license.html
@@ -53,11 +53,8 @@ The additional hash is for extra parameters:
 
 =item B<section =E<gt> N>
 
-The value MUST be a number, and will be the default man section number
-to be used with the given .pod file.  This number can be altered if
-the .pod file has a line like this:
-
-  =for comment openssl_manual_section: 4
+The value MUST be a number, and will be the man section number
+to be used with the given .pod file.
 
 =item B<debug =E<gt> 0|1>
 
@@ -109,12 +106,6 @@ sub extract_pod_info {
     my %podinfo = ( section => $defaults{section});
     while(<$input>) {
         s|\R$||;
-        if (m|^=for\s+comment\s+openssl_manual_section:\s*([0-9])\s*$|) {
-            print STDERR "DEBUG: Found man section number $1\n"
-                if $defaults{debug};
-            $podinfo{section} = $1;
-        }
-
         # Stop reading when we have reached past the NAME section.
         last if (m|^=head1|
                  && defined $podinfo{lastsect}
@@ -149,7 +140,7 @@ sub extract_pod_info {
     $podinfo{lastsecttext} =~ s| - .*$||;
 
     my @names =
-        map { s|\s+||g; $_ }
+        map { s|\s+||g; s|/|-|g; $_ }
         split(m|,|, $podinfo{lastsecttext});
 
     return ( section => $podinfo{section}, names => [ @names ] );
