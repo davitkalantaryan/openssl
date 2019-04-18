@@ -1,6 +1,12 @@
 # Ignore editor artefacts
 /.dir-locals.el
 
+prj/openssl_qt/.qmake.stash
+prj/openssl_qt/android-libopenssl.so-deployment-settings.json
+prj/openssl_qt/openssl.pro.autosave
+prj/openssl_qt/openssl.pro.user
+
+
 # Top level excludes
 /Makefile.orig
 /MINFO
