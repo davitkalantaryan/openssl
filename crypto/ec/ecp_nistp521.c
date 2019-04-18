@@ -42,8 +42,8 @@ NON_EMPTY_TRANSLATION_UNIT
 
 # if defined(__GNUC__) && (__GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 1))
   /* even with gcc, the typedef won't work for 32-bit platforms */
-typedef __uint128_t uint128_t;  /* nonstandard; implemented by gcc on 64-bit
-                                 * platforms */
+//typedef __uint128_t uint128_t;  /* nonstandard; implemented by gcc on 64-bit
+//                                 * platforms */
 # else
 #  error "Need GCC 3.1 or later to define type uint128_t"
 # endif
@@ -127,6 +127,8 @@ static const felem_bytearray nistp521_curve_params[5] = {
  * 'largefelem' */
 
 # define NLIMBS 9
+
+typedef unsigned int uint128_t __attribute__((mode(TI)));
 
 typedef uint64_t limb;
 typedef limb felem[NLIMBS];
