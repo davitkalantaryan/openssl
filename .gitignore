@@ -34,8 +34,8 @@ Makefile
 # Auto generated headers
 /crypto/buildinf.h
 /apps/progs.h
-/crypto/include/internal/*_conf.h
-/openssl/include/opensslconf.h
+#/crypto/include/internal/*_conf.h # commented by DK
+#/openssl/include/opensslconf.h # commeted by DK
 /util/domd
 
 # Executables
