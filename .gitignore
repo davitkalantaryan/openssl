@@ -1,6 +1,7 @@
 # Ignore editor artefacts
 /.dir-locals.el
 
+new/prj/build-openssl-Android_for_armeabi_v7a_Clang_Qt_5_12_2_for_Android_ARMv7-Debug/
 prj/openssl_qt/.qmake.stash
 prj/openssl_qt/android-libopenssl.so-deployment-settings.json
 prj/openssl_qt/openssl.pro.autosave
@@ -131,8 +132,8 @@ Makefile
 # Auto generated assembly language source files
 *.s
 !/crypto/*/asm/*.s
-/crypto/arm*.S
-/crypto/*/*.S
+#/crypto/arm*.S
+#/crypto/*/*.S
 *.asm
 !/crypto/*/asm/*.asm
 
